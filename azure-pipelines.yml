@@ -5,10 +5,23 @@
 
 trigger:
 - main
-
-pool:
-  vmImage: 'vs2017-win2016'
-
+- stage: Deploy
+   jobs:
+   - job: Deploy
+     pool:
+       vmImage: 'vs2017-win2016'
+     steps:
+  - 
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    downloadPath: '$(System.ArtifactsDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
