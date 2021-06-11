@@ -23,14 +23,14 @@ variables:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: VSBuild@1
+ task: VSBuild@1
   inputs:
     solution: '$(solution)'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+  task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
@@ -54,9 +54,9 @@ stages:
         downloadType: 'single'
         artifactName: 'drop'
          downloadPath: '$(System.ArtifactsDirectory)'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
+ - task: AzureRmWebAppDeployment@4
+- inputs:
+-  ConnectionType: 'AzureRM'
     azureSubscription: 'ME DevOps Bootcamp (7822d954-8181-41e7-8829-9b74641b60ad)'
     appType: 'webApp'
     WebAppName: 'san-nak-webapp'
