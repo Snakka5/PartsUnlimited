@@ -60,7 +60,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'ME DevOps Bootcamp (7822d954-8181-41e7-8829-9b74641b60ad)'
+        azureSubscription: 'Sandeep Azure Connection'
         appType: 'webApp'
         WebAppName: 'san-nak-webapp'
         packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
